@@ -29,11 +29,13 @@
           inherit customRC;
           packages.myPlugins.start = start;
           packages.myPlugins.opt = opt;
+	  lua = pkgs.neovim-unwrapped;
         };
       };
+      mynvim = pkgs.wrapNeovim pkgs.neovim-unwrapped config;
     in
     rec {
-      packages.mynvim = pkgs.wrapNeovim pkgs.neovim-unwrapped config;
+      packages.mynvim = mynvim;
       packages.x86_64-linux.default = packages.mynvim;
       devShells.x86_64-linux.default = pkgs.mkShell {
         buildInputs = [ packages.mynvim ];
@@ -42,5 +44,10 @@
         '';
       };
       apps.x86_64-linux.default = { type = "app"; program = packages.mynvim; };
+      homeModules.mynvim = { config, pkgs, ... }: {
+        options.programs.niri = { 
+	  enable = nixpkgs.lib.mkEnableOption "niri";
+        };
+      };
     };
 }
