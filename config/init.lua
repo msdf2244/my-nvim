@@ -68,3 +68,6 @@ vim.lsp.config['nil'] = {
 }
 vim.lsp.enable('nil')
 
+if vim.g.neovide then
+  vim.o.guifont = "Inconsolata Nerd Font:h12"
+end

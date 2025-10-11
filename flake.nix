@@ -44,7 +44,7 @@
       };
       apps.x86_64-linux.default = {
         type = "app";
-        program = packages.mynvim;
+        program = "${packages.mynvim}/bin/nvim";
       };
     };
 }
