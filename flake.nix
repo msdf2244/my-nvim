@@ -29,7 +29,6 @@
           inherit customRC;
           packages.myPlugins.start = start;
           packages.myPlugins.opt = opt;
-	  lua = pkgs.neovim-unwrapped;
         };
       };
       mynvim = pkgs.wrapNeovim pkgs.neovim-unwrapped config;
@@ -43,11 +42,9 @@
           echo "Entering dev shell with neovim"
         '';
       };
-      apps.x86_64-linux.default = { type = "app"; program = packages.mynvim; };
-      homeModules.mynvim = { config, pkgs, ... }: {
-        options.programs.niri = { 
-	  enable = nixpkgs.lib.mkEnableOption "niri";
-        };
+      apps.x86_64-linux.default = {
+        type = "app";
+        program = packages.mynvim;
       };
     };
 }
