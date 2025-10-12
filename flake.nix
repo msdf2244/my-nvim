@@ -26,6 +26,7 @@
       start = with pkgs.vimPlugins; [
         mini-nvim
         gitsigns-nvim
+        catppuccin-nvim
       ];
       opt = [ ];
       prelude = builtins.concatStringsSep "\n" (map (x: "vim.opt.runtimepath:append(',${x}')") grammars);

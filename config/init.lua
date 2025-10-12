@@ -9,6 +9,7 @@ vim.opt.termguicolors = true
 vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 vim.opt.signcolumn = "yes:1"
 vim.g.mapleader = " "
+
 require('mini.statusline').setup()
 require('mini.completion').setup()
 require('mini.icons').setup()
@@ -20,6 +21,7 @@ require('mini.comment').setup()
 require('mini.pick').setup()
 require('mini.extra').setup()
 require('gitsigns').setup()
+require('catppuccin').setup { flavour = "mocha" }
 
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", {})
 vim.keymap.set("n", "<leader>bp", ":bprev<CR>", {})
@@ -94,5 +96,5 @@ if vim.g.neovide then
   vim.o.guifont = "Inconsolata Nerd Font:h12"
 end
 
-vim.cmd "colorscheme habamax"
+vim.cmd.colorscheme "catppuccin"
 
