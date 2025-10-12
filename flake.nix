@@ -51,6 +51,7 @@
     in
     rec {
       packages.mynvim = mynvim;
+      packages.default = packages.mynvim;
       packages.x86_64-linux.default = packages.mynvim;
       devShells.x86_64-linux.default = pkgs.mkShell {
         buildInputs = [ packages.mynvim ];
