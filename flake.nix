@@ -10,13 +10,29 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
-      customRC = ''luafile ${./config/init.lua}'';
+      grammars = with pkgs.tree-sitter-grammars; [
+        tree-sitter-nix
+        tree-sitter-python
+        tree-sitter-rust
+      ];
       dependencies = with pkgs; [
+        # language servers
         lua-language-server
         nil
+        pyright
+        rust-analyzer
+        vscode-langservers-extracted
       ];
-      start = with pkgs.vimPlugins; [ mini-nvim ];
+      start = with pkgs.vimPlugins; [
+        mini-nvim
+        gitsigns-nvim
+      ];
       opt = [ ];
+      prelude = builtins.concatStringsSep "\n" (map (x: "vim.opt.runtimepath:append(',${x}')") grammars);
+      customLuaRC = ''
+        ${prelude}
+        ${builtins.readFile ./config/init.lua}
+      '';
       config = {
         viAlias = true;
         vimAlias = true;
@@ -26,7 +42,7 @@
         # extraLuaPackages = x: [];
         extraMakeWrapperArgs = ''--prefix PATH : "${pkgs.lib.makeBinPath dependencies}"'';
         configure = {
-          inherit customRC;
+          inherit customLuaRC;
           packages.myPlugins.start = start;
           packages.myPlugins.opt = opt;
         };

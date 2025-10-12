@@ -9,7 +9,6 @@ vim.opt.termguicolors = true
 vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 vim.opt.signcolumn = "yes:1"
 vim.g.mapleader = " "
-
 require('mini.statusline').setup()
 require('mini.completion').setup()
 require('mini.icons').setup()
@@ -20,6 +19,7 @@ require('mini.surround').setup()
 require('mini.comment').setup()
 require('mini.pick').setup()
 require('mini.extra').setup()
+require('gitsigns').setup()
 
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", {})
 vim.keymap.set("n", "<leader>bp", ":bprev<CR>", {})
@@ -68,6 +68,31 @@ vim.lsp.config['nil'] = {
 }
 vim.lsp.enable('nil')
 
+vim.lsp.config['pyright'] = {
+    -- Command and arguments to start the server.
+    cmd = { 'pyright-langserver', '--stdio' },
+    -- Filetypes to automatically attach to.
+    filetypes = { 'python' },
+}
+vim.lsp.enable('pyright')
+
+vim.lsp.config['rust-analyzer'] = {
+    cmd = { 'rust-analyzer' },
+    filetypes = { 'rust' }
+}
+vim.lsp.enable('rust-analyzer')
+
+-- enable tree sitter
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function()
+        pcall(vim.treesitter.start)
+    end
+})
+
+-- Misc
 if vim.g.neovide then
   vim.o.guifont = "Inconsolata Nerd Font:h12"
 end
+
+vim.cmd "colorscheme habamax"
+
