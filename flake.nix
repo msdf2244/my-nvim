@@ -25,6 +25,7 @@
       ];
       start = with pkgs.vimPlugins; [
         mini-nvim
+        yazi-nvim
         gitsigns-nvim
         catppuccin-nvim
       ];
