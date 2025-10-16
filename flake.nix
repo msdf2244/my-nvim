@@ -10,25 +10,29 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
-      grammars = with pkgs.tree-sitter-grammars; [
-        tree-sitter-nix
-        tree-sitter-python
-        tree-sitter-rust
+      grammars = with pkgs.vimPlugins; [
+        (nvim-treesitter.withPlugins (_: nvim-treesitter.allGrammars))
       ];
       dependencies = with pkgs; [
+        # tools
+        ripgrep
+        fantomas
         # language servers
         lua-language-server
         nil
         pyright
         rust-analyzer
-        vscode-langservers-extracted
       ];
-      start = with pkgs.vimPlugins; [
-        mini-nvim
-        yazi-nvim
-        gitsigns-nvim
-        catppuccin-nvim
-      ];
+      start =
+        with pkgs.vimPlugins;
+        [
+          mini-nvim
+          yazi-nvim
+          gitsigns-nvim
+          catppuccin-nvim
+          Ionide-vim
+        ]
+        ++ grammars;
       opt = [ ];
       prelude = builtins.concatStringsSep "\n" (map (x: "vim.opt.runtimepath:append(',${x}')") grammars);
       customLuaRC = ''
