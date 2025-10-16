@@ -17,11 +17,13 @@
         # tools
         ripgrep
         fantomas
+        yazi
         # language servers
         lua-language-server
         nil
         pyright
         rust-analyzer
+        fsautocomplete
       ];
       start =
         with pkgs.vimPlugins;

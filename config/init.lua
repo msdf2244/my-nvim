@@ -103,10 +103,4 @@ vim.api.nvim_create_autocmd("FileType", {
     end
 })
 
--- Misc
-if vim.g.neovide then
-  vim.o.guifont = "ComicShannsMono Nerd Font:h12"
-end
-
 vim.cmd.colorscheme "catppuccin"
-
