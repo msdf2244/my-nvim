@@ -1,6 +1,8 @@
 require('mini.statusline').setup()
+require('mini.tabline').setup()
+require('mini.git').setup()
+require('mini.diff').setup()
 require('mini.completion').setup()
-require('mini.icons').setup()
 require('mini.snippets').setup()
 require('mini.pairs').setup()
 require('mini.ai').setup()
@@ -8,9 +10,10 @@ require('mini.surround').setup()
 require('mini.comment').setup()
 require('mini.pick').setup()
 require('mini.extra').setup()
-require('gitsigns').setup()
 require('yazi').setup()
 require('catppuccin').setup { flavour = "mocha" }
+require('mini.icons').setup()
+MiniIcons.tweak_lsp_kind()
 
 vim.opt.number = true;
 vim.opt.relativenumber = true;
@@ -73,14 +76,12 @@ vim.lsp.config['luals'] = {
         }
     }
 }
-vim.lsp.enable('luals')
 
 vim.lsp.config['nil'] = {
     cmd = { 'nil' },
     filetypes = { 'nix' },
     root_markers = { '.git' },
 }
-vim.lsp.enable('nil')
 
 vim.lsp.config['pyright'] = {
     -- Command and arguments to start the server.
@@ -88,12 +89,15 @@ vim.lsp.config['pyright'] = {
     -- Filetypes to automatically attach to.
     filetypes = { 'python' },
 }
-vim.lsp.enable('pyright')
 
 vim.lsp.config['rust-analyzer'] = {
     cmd = { 'rust-analyzer' },
     filetypes = { 'rust' }
 }
+
+vim.lsp.enable('luals')
+vim.lsp.enable('nil')
+vim.lsp.enable('pyright')
 vim.lsp.enable('rust-analyzer')
 
 -- enable tree sitter

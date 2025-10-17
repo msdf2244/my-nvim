@@ -14,10 +14,12 @@
         (nvim-treesitter.withPlugins (_: nvim-treesitter.allGrammars))
       ];
       dependencies = with pkgs; [
+
         # tools
         ripgrep
         fantomas
         yazi
+
         # language servers
         lua-language-server
         nil
@@ -30,7 +32,6 @@
         [
           mini-nvim
           yazi-nvim
-          gitsigns-nvim
           catppuccin-nvim
           Ionide-vim
         ]
