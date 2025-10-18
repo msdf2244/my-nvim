@@ -26,6 +26,7 @@
         pyright
         rust-analyzer
         fsautocomplete
+        nimlangserver
       ];
       start =
         with pkgs.vimPlugins;

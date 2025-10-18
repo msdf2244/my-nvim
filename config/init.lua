@@ -95,10 +95,16 @@ vim.lsp.config['rust-analyzer'] = {
     filetypes = { 'rust' }
 }
 
+vim.lsp.config['nimlangserver'] = {
+    cmd = { 'nimlangserver' },
+    filetypes = { 'nim' }
+}
+
 vim.lsp.enable('luals')
 vim.lsp.enable('nil')
 vim.lsp.enable('pyright')
 vim.lsp.enable('rust-analyzer')
+vim.lsp.enable('nimlangserver')
 
 -- enable tree sitter
 vim.api.nvim_create_autocmd("FileType", {
