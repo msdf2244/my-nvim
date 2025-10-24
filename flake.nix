@@ -32,6 +32,7 @@
         with pkgs.vimPlugins;
         [
           mini-nvim
+          blink-cmp
           yazi-nvim
           catppuccin-nvim
           Ionide-vim

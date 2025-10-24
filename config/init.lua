@@ -2,7 +2,13 @@ require('mini.statusline').setup()
 require('mini.tabline').setup()
 require('mini.git').setup()
 require('mini.diff').setup()
-require('mini.completion').setup()
+require('blink.cmp').setup({
+  completion = {
+	  list = {
+		  selection = { preselect = false, auto_insert = true }
+	  }
+  }
+})
 require('mini.snippets').setup()
 require('mini.pairs').setup()
 require('mini.ai').setup()
