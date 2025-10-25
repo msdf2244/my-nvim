@@ -42,7 +42,8 @@
       prelude = builtins.concatStringsSep "\n" (map (x: "vim.opt.runtimepath:append(',${x}')") grammars);
       customLuaRC = ''
         ${prelude}
-        ${builtins.readFile ./config/init.lua}
+	vim.opt.runtimepath:append(',${./nvim}')
+	${builtins.readFile ./nvim/init.lua}
       '';
       config = {
         viAlias = true;

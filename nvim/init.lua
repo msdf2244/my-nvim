@@ -1,3 +1,4 @@
+require('settings')
 require('mini.statusline').setup()
 require('mini.tabline').setup()
 require('mini.git').setup()
@@ -20,17 +21,6 @@ require('yazi').setup()
 require('catppuccin').setup { flavour = "mocha" }
 require('mini.icons').setup()
 MiniIcons.tweak_lsp_kind()
-
-vim.opt.number = true;
-vim.opt.relativenumber = true;
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.expandtab = true
-vim.opt.termguicolors = true
-vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
-vim.opt.signcolumn = "yes:1"
-vim.g.mapleader = " "
-vim.g.localmapleader = ","
 
 vim.keymap.set("n", "<leader>wv", ":vsplit<CR>", {})
 vim.keymap.set("n", "<leader>ws", ":split<CR>", {})
