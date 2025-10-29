@@ -11,11 +11,15 @@ require('lsp.luals')
 require('lsp.pyright')
 require('lsp.nil')
 require('lsp.rust-analyzer')
+require('lsp.emmetls')
+require('lsp.vtsls')
 
 vim.lsp.enable('luals')
 vim.lsp.enable('nil')
 vim.lsp.enable('pyright')
 vim.lsp.enable('rust-analyzer')
+vim.lsp.enable('emmetls')
+vim.lsp.enable('vtsls')
 
 -- enable tree sitter
 vim.api.nvim_create_autocmd("FileType", {

@@ -27,6 +27,8 @@
         rust-analyzer
         fsautocomplete
         nimlangserver
+        vtsls
+        emmet-language-server
       ];
       start =
         with pkgs.vimPlugins;
