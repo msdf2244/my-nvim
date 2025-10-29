@@ -17,8 +17,14 @@
 
         # tools
         ripgrep
-        fantomas
         yazi
+        git
+
+        # formatters
+        fantomas
+        stylua
+        rustfmt
+        prettier
 
         # language servers
         lua-language-server
@@ -38,14 +44,15 @@
           yazi-nvim
           catppuccin-nvim
           Ionide-vim
+          conform-nvim
         ]
         ++ grammars;
       opt = [ ];
       prelude = builtins.concatStringsSep "\n" (map (x: "vim.opt.runtimepath:append(',${x}')") grammars);
       customLuaRC = ''
-        ${prelude}
-	vim.opt.runtimepath:append(',${./nvim}')
-	${builtins.readFile ./nvim/init.lua}
+                ${prelude}
+        	vim.opt.runtimepath:append(',${./nvim}')
+        	${builtins.readFile ./nvim/init.lua}
       '';
       config = {
         viAlias = true;

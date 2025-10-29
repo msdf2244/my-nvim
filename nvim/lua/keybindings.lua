@@ -21,7 +21,7 @@ vim.keymap.set("n", "<leader>fm", ":Pick marks<CR>", {})
 vim.keymap.set("n", "<leader>fp", ":e " .. vim.fn.stdpath('config') .. "<CR>", {})
 vim.keymap.set("n", "<leader>/", ":Pick grep_live<CR>", {})
 
-vim.keymap.set("n", "<leader>cf", ":lua vim.lsp.buf.format()<CR>", {})
+vim.keymap.set("n", "<leader>cf", ":lua require('conform').format()<CR>", {})
 vim.keymap.set("n", "<leader>cr", ":lua vim.lsp.buf.rename()<CR>", {})
 vim.keymap.set("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", {})
 vim.keymap.set("n", "<leader>ci", ":lua vim.lsp.buf.implementation()<CR>", {})
