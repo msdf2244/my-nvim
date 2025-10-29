@@ -25,6 +25,7 @@
         stylua
         rustfmt
         prettier
+        prettierd
 
         # language servers
         lua-language-server
