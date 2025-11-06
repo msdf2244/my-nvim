@@ -13,6 +13,7 @@ require("lsp.pyright")
 require("lsp.nil")
 require("lsp.rust-analyzer")
 require("lsp.emmetls")
+require("lsp.nimlangserver")
 require("lsp.vtsls")
 
 vim.lsp.enable("luals")
