@@ -19,6 +19,7 @@ vim.lsp.enable("luals")
 vim.lsp.enable("nil")
 vim.lsp.enable("pyright")
 vim.lsp.enable("rust-analyzer")
+vim.lsp.enable("nimlangserver")
 vim.lsp.enable("emmetls")
 vim.lsp.enable("vtsls")
 
